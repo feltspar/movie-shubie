@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.egen.rest.entity.User;
+import io.egen.rest.exception.UserAlreadyExistsException;
 import io.egen.rest.repository.UserRepository;
 
 @Service
@@ -18,6 +19,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public User createUser(User user) {
+		User exist = userRepository.findUserById(user.getUserId()); 
+		if(exist != null){
+			throw new UserAlreadyExistsException("User wit id: "+user.getUserId()+" already exists");
+		}
 		return userRepository.createUser(user);
 	}
 
@@ -28,6 +33,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User findUserById(String userId) {
+		User exist = userRepository.findUserById(userId); 
+		if(exist == null){
+			throw new UserAlreadyExistsException("User wit id: "+ userId+" not found.");
+		}
 		return userRepository.findUserById(userId);
 	}
 
@@ -36,7 +45,7 @@ public class UserServiceImpl implements UserService {
 	public User updateUser(String userId, User user) {
 		User existing = userRepository.findUserById(userId);
 		if(existing == null){
-			return null; //not found exception
+			throw new UserAlreadyExistsException("User wit id: "+ userId+" not found.");
 		}
 		return userRepository.updateUser(user);
 	}
@@ -46,7 +55,7 @@ public class UserServiceImpl implements UserService {
 	public void deleteUser(String userId) {
 		User existing = userRepository.findUserById(userId);
 		if(existing == null){
-			 //throw not found exception
+			throw new UserAlreadyExistsException("User wit id: "+ userId+" not found.");
 		}
 		userRepository.deleteUser(existing);
 	}

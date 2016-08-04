@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.egen.rest.entity.Movie;
+import io.egen.rest.exception.BadRequestException;
 import io.egen.rest.exception.MovieAlreadyExistsException;
 import io.egen.rest.exception.MovieNotFoundException;
 import io.egen.rest.repository.MovieRepository;
@@ -39,7 +40,7 @@ public class MovieServiceImp implements MovieService {
 			System.out.println(year);
 			return repository.findByYear(year);
 		}else {
-			return null;
+			throw new BadRequestException("Bad parameter");
 		}
 	}
 

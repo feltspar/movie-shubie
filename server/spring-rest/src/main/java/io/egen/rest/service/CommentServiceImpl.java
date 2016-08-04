@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.egen.rest.entity.Comment;
+import io.egen.rest.exception.BadRequestException;
 import io.egen.rest.exception.CommentAlreadyExistsException;
 import io.egen.rest.exception.CommentNotFoundException;
 import io.egen.rest.repository.CommentRepository;
@@ -30,6 +31,9 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public List<Comment> findAllByMovie(String movieId) {
 		//add exception check
+		if(movieId == null){
+			throw new BadRequestException("Invalid or Null id");
+		}
 		return commentRepository.findAllByMovie(movieId);
 	}
 
