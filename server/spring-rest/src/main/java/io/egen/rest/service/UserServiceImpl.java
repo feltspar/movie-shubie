@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	public User createUser(User user) {
 		User exist = userRepository.findUserById(user.getUserId()); 
 		if(exist != null){
-			throw new UserAlreadyExistsException("User wit id: "+user.getUserId()+" already exists");
+			throw new UserAlreadyExistsException("User with id: "+user.getUserId()+" already exists");
 		}
 		return userRepository.createUser(user);
 	}
@@ -60,4 +60,15 @@ public class UserServiceImpl implements UserService {
 		userRepository.deleteUser(existing);
 	}
 
+	@Override
+	public User login(User user) {
+		User backend = userRepository.login(user.getEmail());
+		if(user.getPassWord().equals(backend.getPassWord())){
+			return user;
+		}
+		else
+			return null;
+	}
+
+	
 }

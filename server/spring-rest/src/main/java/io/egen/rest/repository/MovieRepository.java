@@ -23,4 +23,6 @@ public interface MovieRepository {
 	public List<Movie> findByIMDBRating();
 
 	public List<Movie> findByIMDBVotes();
+
+	public List<Movie> findByType(String type);
 }

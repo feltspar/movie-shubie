@@ -36,6 +36,11 @@ public class UserController {
 		return userService.findUserById(userId);
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, path = "/login", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public User findByEmail(@PathVariable("email") User user){
+		return userService.login(user);
+	}
+	
 	@RequestMapping(method = RequestMethod.PUT, path = "{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public User updateUser(@PathVariable("id") String userId, @RequestBody User user){
 		return userService.updateUser(userId, user);

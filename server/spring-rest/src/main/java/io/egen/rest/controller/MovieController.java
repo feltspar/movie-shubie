@@ -14,7 +14,7 @@ import io.egen.rest.entity.Movie;
 import io.egen.rest.service.MovieService;
 
 @RestController
-@RequestMapping(path = "movies")
+@RequestMapping(path = "titles")
 public class MovieController {
 
 	@Autowired
@@ -24,6 +24,17 @@ public class MovieController {
 	public List<Movie> findAll() {
 		return movieService.findAll();
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/type/movie", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Movie> getByTypeMovies() {
+		return movieService.getByType("movie");
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/type/series", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Movie> getByTypeSeries() {
+		return movieService.getByType("series");
+	}
+	
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/imdbrating", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Movie> getByIMDBRating() {

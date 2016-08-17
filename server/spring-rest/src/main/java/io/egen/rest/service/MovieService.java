@@ -22,4 +22,6 @@ public interface MovieService {
 
 	public void delete(String id);
 
+	public List<Movie> getByType(String type);
+
 }

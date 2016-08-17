@@ -16,4 +16,8 @@ public interface UserRepository {
 
 	User createUser(User user);
 
+	User login(String email);
+
+	
+
 }

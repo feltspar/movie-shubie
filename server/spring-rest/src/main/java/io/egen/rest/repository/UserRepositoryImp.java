@@ -45,4 +45,11 @@ public class UserRepositoryImp implements UserRepository {
 		em.remove(user);
 	}
 
+	@Override
+	public User login(String email) {
+		TypedQuery<User> query = em.createNamedQuery("User.findByEmail", User.class);
+		query.setParameter("pEmail", email);
+		return query.getSingleResult();
+	}
+
 }

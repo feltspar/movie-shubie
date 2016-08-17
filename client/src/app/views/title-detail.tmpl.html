@@ -1,0 +1,37 @@
+<h1>title details</h1>
+
+<div class="row">
+  <div class="col-sm-8">
+    <img ng-src="{{titleDetailVm.title.posterURL}}" class="poster">
+  </div>
+  
+  <div class="col-sm-8">
+    <p> <strong> Title </strong>: {{titleDetailVm.title.title}}</p>
+    <p> <strong> Year</strong>: {{titleDetailVm.title.year}}</p>
+    <p> <strong> Censor Rating</strong>: {{titleDetailVm.title.censorRating}}</p>
+    <p> <strong> Runtime in minutes </strong>: {{titleDetailVm.title.runtime}}</p>
+
+
+    <p> <strong> Genre </strong>: </p>
+    <p ng-repeat="genre in titleDetailVm.title.genre">
+      {{genre.genreName}}
+    </p>
+
+    <strong> Cast</strong>
+    <p ng-repeat= "cast in titleDetailVm.title.cast">
+      {{cast.name}}
+    </p>
+    
+    
+    
+    <p> <strong> Plot </strong>: {{titleDetailVm.title.plot}}</p>
+    <p> <strong> Language </strong>: {{titleDetailVm.title.language}}</p>
+    <p> <strong> Country </strong>: {{titleDetailVm.title.country}}</p>
+    <p> <strong> Award </strong>: {{titleDetailVm.title.award}}</p>
+    <p> <strong> IMDB </strong>: </p>
+    <p> <strong>Meta Score: </strong>:{{titleDetailVm.title.imdb.metascore}}</p>
+    <p> <strong> Rating: </strong>:{{titleDetailVm.title.imdb.imdbRating}}</p>
+    <p> <strong>Votes:</strong>: {{titleDetailVm.title.imdb.imdbVotes}}</p>
+    <p> <strong>imdbId: </strong>: {{titleDetailVm.title.imdb.imdbId}}</p>
+  </div>
+</div>

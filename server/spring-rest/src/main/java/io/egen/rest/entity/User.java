@@ -12,9 +12,10 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table
-@NamedQueries(
-		@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u ORDER BY u.firstName ASC")
-)
+@NamedQueries({
+		@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u ORDER BY u.firstName ASC") ,
+		@NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.email = :pEmail")
+})
 public class User {
 
 	
@@ -91,3 +92,15 @@ public class User {
 	}
 	
 }
+
+
+
+/*
+{   "email": "shubham.s.saxena@gmail.com",
+	"passWord": "password!@#",
+	
+	"firstName": "Shubham",
+	"lastName": "Saxena",
+	
+	"displayPicUrl": "https://scontent-lga3-1.xx.fbcdn.net/t31.0-8/13243932_10157086561025724_8486387441675609128_o.jpg"
+}*/

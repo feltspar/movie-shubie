@@ -49,7 +49,7 @@ public class MovieRepositoryImp implements MovieRepository {
 	@Override
 	public List<Movie> findByIMDBVotes() {
 		System.out.println("votes");
-		TypedQuery<Movie> query = em.createNamedQuery("Movie.findByIMDBRating", Movie.class);
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.findByIMDVotes", Movie.class);
 		return query.getResultList();
 	}
 	
@@ -97,6 +97,13 @@ public class MovieRepositoryImp implements MovieRepository {
 	public void delete(Movie movie) {
 		em.remove(movie);
 		//consider deleting all related comments.
+	}
+
+	@Override
+	public List<Movie> findByType(String type) {
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.findByType", Movie.class);
+		query.setParameter("pType", type);
+		return query.getResultList();
 	}
 
 	

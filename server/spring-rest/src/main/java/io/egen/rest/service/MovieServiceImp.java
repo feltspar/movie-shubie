@@ -82,4 +82,9 @@ public class MovieServiceImp implements MovieService {
 		}
 		repository.delete(existing);
 	}
+
+	@Override
+	public List<Movie> getByType(String type) {
+		return repository.findByType(type);
+	}
 }

@@ -28,7 +28,8 @@ import io.egen.rest.entity.ImdbData;
 		@NamedQuery(name = "Movie.findById", query = "SELECT m FROM Movie m WHERE m.id=:pId"),
 		@NamedQuery(name = "Movie.findByYear", query = "SELECT m FROM Movie m WHERE m.year=:pyear"),
 		@NamedQuery(name = "Movie.findByIMDBRating", query = "SELECT m FROM Movie m ORDER BY m.imdb.imdbRating DESC"),
-		@NamedQuery(name = "Movie.findByIMDVotes", query = "SELECT m FROM Movie m ORDER BY m.imdb.imdbVotes DESC")
+		@NamedQuery(name = "Movie.findByIMDVotes", query = "SELECT m FROM Movie m ORDER BY m.imdb.imdbVotes DESC"),
+		@NamedQuery(name = "Movie.findByType", query = "SELECT m FROM Movie m WHERE m.type = :pType")
 })
 public class Movie {
 
@@ -229,7 +230,7 @@ public class Movie {
 	"language": "english",
 	"country": "usa, uk",
 	"award": "won 1 oscar. another 35 wins & 123 nominations.",
-	"poster": "http://ia.media-imdb.com/images/m/mv5bmjixntu4mzy4mf5bml5banbnxkftztgwmzm4odi3mje@._v1_sx300.jpg",
+	"posterUrl": "http://ia.media-imdb.com/images/m/mv5bmjixntu4mzy4mf5bml5banbnxkftztgwmzm4odi3mje@._v1_sx300.jpg",
 	"imdb": {
 		"metascore": 74,
 		"imdbRating": 8.6,
