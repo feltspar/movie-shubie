@@ -1,0 +1,17 @@
+
+<input type= "text" class = "form-control" placeholder = "Search key actor/genre/rating/year" ng-model = "titleVm.searchText">
+
+<section id="titleSection" ng-repeat="title in titleVm.titles | filter:titleVm.searchText">
+  <div class="col-xs-6 col-md-3">
+    <a ng-href="#/title-detail/{{title.id}}" class="thumbnail">
+      <img ng-src="{{title.posterURL}}" class="poster">
+    </a>
+    <ul class="li">
+      <li>{{title.title}}</li>
+      <li> Meta Score: {{title.imdb.metascore}}</li>
+      <li>IMDB rating: {{title.imdb.imdbRating}}</li>
+      <li>title genre: {{title.plot}}</li>
+    </ul>
+  </div>
+
+</section>
